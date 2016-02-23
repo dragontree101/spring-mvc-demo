@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-    <display-name>Spring-mvc-demo</display-name>
+    <display-name>Spring-Mvc-Demo</display-name>
 
     <!-- 读取spring配置文件 -->
     <context-param>
@@ -13,6 +13,13 @@
         </param-value>
     </context-param>
 
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <!-- Spring字符集过滤器 -->
     <filter>
@@ -32,13 +39,10 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
 
     <!-- springMVC核心配置 -->
     <servlet>
-        <servlet-name>spring</servlet-name>
+        <servlet-name>SpringMvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -47,7 +51,7 @@
         <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>spring</servlet-name>
+        <servlet-name>SpringMvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>
