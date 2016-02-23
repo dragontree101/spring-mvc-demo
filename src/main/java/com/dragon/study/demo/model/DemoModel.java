@@ -6,11 +6,11 @@ package com.dragon.study.demo.model;
 public class DemoModel {
 
     private String name;
-    private int age;
-    private int score;
+    private Integer age;
+    private Integer score;
 
 
-    public DemoModel(String name, int age, int score) {
+    public DemoModel(String name, Integer age, Integer score) {
         this.name = name;
         this.age = age;
         this.score = score;
@@ -24,19 +24,19 @@ public class DemoModel {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 
