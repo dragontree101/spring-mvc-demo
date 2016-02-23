@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="errorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <file>logs/demo-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/demo-error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%date{HH:mm:ss.SSS} %-5level [%file:%line] %logger{80} - %msg%n</Pattern>
+        </layout>
+    </appender>
+    <appender name="infoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <file>logs/demo-log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/demo-log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%date{HH:mm:ss.SSS} %-5level [%file:%line] %logger{80} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <root>
+        <appender-ref ref="infoLog" level="INFO"/>
+        <appender-ref ref="errorLog"/>
+        <appender-ref ref="console" level="INFO"/>
+    </root>
+    
+	<logger name="jdbc.resultset" level="ERROR" additivity="false">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</logger>
+	<logger name="jdbc.audit" level="ERROR" additivity="false">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</logger>
+	<logger name="jdbc.sqltiming" level="INFO" additivity="false">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</logger>
+	<logger name="jdbc.connection" level="INFO" additivity="false">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</logger>
+</configuration>

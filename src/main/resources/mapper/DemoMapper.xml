@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dragon.study.demo.mapper.DemoMapper">
+
+    <select id="getAllDemos"  resultType="com.dragon.study.demo.model.DemoModel">
+        select name, age, score from demo_table
+    </select>
+
+    <insert id="insertDemo" parameterType="com.dragon.study.demo.model.DemoModel">
+        insert into demo_table(name, age, score) values(#{name}, #{age}, #{score})
+    </insert>
+
+    <delete id="deleteDemo" parameterType="string">
+        delete from demo_table where name = #{name}
+    </delete>
+
+</mapper>
