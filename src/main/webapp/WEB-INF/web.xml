@@ -5,20 +5,22 @@
 
     <display-name>Spring-Mvc-Demo</display-name>
 
-    <!-- 读取spring配置文件 -->
+    <!-- 它会在创建时自动查找WEB-INF/ 下的applicationContext.xml 文件 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- 如果没有默认的,则读取spring配置文件 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring-bean/spring.xml;
+        <param-value>
             classpath:spring-bean/applicationContext.xml
         </param-value>
     </context-param>
 
+    <!--为了解决classloader的内存泄漏的问题-->
     <listener>
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-    </listener>
-
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
     <!-- Spring字符集过滤器 -->

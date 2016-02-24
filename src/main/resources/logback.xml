@@ -39,27 +39,17 @@
         </layout>
     </appender>
 
-
     <root>
         <appender-ref ref="infoLog" level="INFO"/>
         <appender-ref ref="errorLog"/>
         <appender-ref ref="console" level="INFO"/>
     </root>
-    
-	<logger name="jdbc.resultset" level="ERROR" additivity="false">
-		<appender-ref ref="console" />
-		<appender-ref ref="rollingFile" />
-	</logger>
-	<logger name="jdbc.audit" level="ERROR" additivity="false">
-		<appender-ref ref="console" />
-		<appender-ref ref="rollingFile" />
-	</logger>
+
+    <!--把sql相关的信息打到日志里面-->
 	<logger name="jdbc.sqltiming" level="INFO" additivity="false">
-		<appender-ref ref="console" />
-		<appender-ref ref="rollingFile" />
+		<appender-ref ref="infoLog" />
 	</logger>
 	<logger name="jdbc.connection" level="INFO" additivity="false">
-		<appender-ref ref="console" />
-		<appender-ref ref="rollingFile" />
+		<appender-ref ref="infoLog" />
 	</logger>
 </configuration>

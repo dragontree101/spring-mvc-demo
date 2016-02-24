@@ -8,10 +8,6 @@
     <!-- 引入jdbc配置文件 -->
     <context:annotation-config></context:annotation-config>
 
-    <!-- 扫描controller（controller层注入） -->
-    <context:component-scan base-package="com.dragon.study.demo.controller"/>
-    <context:component-scan base-package="com.dragon.study.demo.service"/>
-
     <mvc:annotation-driven />
 
     <bean id="demoDataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
@@ -62,5 +58,6 @@
         <property name="mapperInterface" value="com.dragon.study.demo.mapper.DemoMapper"></property>
         <property name="sqlSessionFactory" ref="demoSqlSessionFactory"></property>
     </bean>
+
 
 </beans>
