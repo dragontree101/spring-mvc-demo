@@ -25,7 +25,7 @@ public class DemoController {
     @Autowired
     private IDemoService demoService;
 
-    @RequestMapping(value = "visitDemo", produces = Constant.CONTENTTYPE)
+    @RequestMapping(value = "visitDemo", produces = Constant.CONTENT_TYPE)
     @ResponseBody
     public String visitDemo(HttpServletRequest request) {
         logger.info("start visit demo");
