@@ -3,6 +3,11 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
+    <!--
+    Spring MVC启动过程大致分为两个过程：
+    1、ContextLoaderListener初始化，实例化IoC容器，并将此容器实例注册到ServletContext中。
+    2、DispatcherServlet初始化。
+    -->
     <display-name>Spring-Mvc-Demo</display-name>
 
     <!-- 它会在创建时自动查找WEB-INF/ 下的applicationContext.xml 文件 -->
@@ -11,6 +16,7 @@
     </listener>
 
     <!-- 如果没有默认的,则读取spring配置文件 -->
+    <!-- 指定Spring IoC容器需要读取的定义了非web层的Bean（DAO/Service）的XML文件路径。 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -42,7 +48,7 @@
     </filter-mapping>
 
 
-    <!-- springMVC核心配置 -->
+    <!-- springMVC核心配置 定义WebApplicationContext上下文中的bean。-->
     <servlet>
         <servlet-name>SpringMvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

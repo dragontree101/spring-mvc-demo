@@ -33,4 +33,13 @@ public class DemoController {
         Message msg = new Message(Constant.STATUS_OK, "ok");
         return JSON.toJSONString(msg);
     }
+
+    @RequestMapping(value = "visitExceptionDemo", produces = Constant.CONTENT_TYPE)
+    @ResponseBody
+    public String visitExceptionDemo(HttpServletRequest request) {
+        logger.info("start visit exception demo");
+        demoService.visitServiceException();
+        Message msg = new Message(Constant.STATUS_OK, "ok");
+        return JSON.toJSONString(msg);
+    }
 }

@@ -6,4 +6,6 @@ package com.dragon.study.demo.service;
 public interface IDemoService {
 
     void visitService();
+
+    void visitServiceException();
 }

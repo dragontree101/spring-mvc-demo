@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -41,5 +42,17 @@ public class DemoServiceImpl implements IDemoService {
         demoMapper.deleteDemo("龙哲");
         demoMapper.deleteDemo("龙若妍");
         demoMapper.deleteDemo("孙晓萍");
+    }
+
+    @Override
+    @Transactional
+    public void visitServiceException() {
+        DemoModel demoModel1 = new DemoModel("龙哲", 30, 100);
+        demoMapper.insertDemo(demoModel1);
+
+        DemoModel demoModel2 = new DemoModel("孙晓萍", 29, 94);
+        demoMapper.insertDemo(demoModel2);
+
+        throw new RuntimeException("test run time exception");
     }
 }
