@@ -12,7 +12,7 @@
     <!-- declares explicit support for annotation-driven MVC controllers (i.e. @RequestMapping, @Controller -->
     <mvc:annotation-driven />
 
-    <context:component-scan base-package="com.dragon.study.demo.service"/>
+    <!--<context:component-scan base-package="com.dragon.study.demo.service"/>-->
 
     <bean id="demoDataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
         <!-- Connection Info -->
